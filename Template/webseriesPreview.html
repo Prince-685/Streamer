@@ -1,0 +1,1252 @@
+<style>
+    *{
+        margin:0;
+        padding:0;
+        font-family: 'Poppins', sans-serif;
+    }
+    .zoom{
+      cursor: pointer;
+    }
+    .zoom:hover {
+        background-color: #000;
+        transition: transform .5s;
+        transform: scale(1.2);
+        border-radius:10px;
+    }
+    .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .main-container{
+        background:#212121;
+        height:auto;
+        width:100%;
+    }
+    .nav{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+    }
+    .fix-nav{
+        background:#212121;
+        width:100%;
+        height:4rem;
+        position:fixed;
+        z-index:100;
+    }
+    .logo img{
+        width:110px;
+        margin-right:20px;
+    }
+    .logo{
+        margin:10px;
+    }
+    .nav-content{
+        padding:5px;
+        margin-right:20px;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px; color:#f6e58d;
+    }
+    .dropbtn {
+      background-color: #212121;
+      color: #f6e58d;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      font-weight:bold;
+      border:none;
+    }
+
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      margin-top:2.5rem;
+      height:auto;
+      min-width: 160px;
+
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #f6e58d;
+      padding: 5px;
+      font-size:14px;
+      font-family: 'Poppins', sans-serif;
+      padding:10px 0px 10px 25px;
+      text-decoration: none;
+      display: block;
+      margin:0;
+    }
+
+    .dropdown-content a:hover {background: black;color:#f6e58d;}
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .nav-content2{
+        padding:5px;
+        margin-left:auto;
+        justify-content: right;
+    }
+
+    .search-wrapper {
+        border-bottom: 1px solid #ecf0f1;
+        border-top-style:none;
+        border-right-style:none;
+        border-left-style:none;
+        height: 30px;
+        display: flex;
+        float:left;
+        margin:5px 20px;
+        align-items: center;
+        overflow-x: hidden;
+    }
+
+    .search-wrapper span {
+        display: inline-block;
+        padding: 0rem;
+        font-size: 1rem;
+        color: #ecf0f1;
+    }
+
+    .search-wrapper input {
+        height: 100%;
+        padding:.5rem 0rem;
+        border: none;
+        outline: none;
+        background:#212121;
+        color:white;
+        font-size:1rem;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #user{
+         color:#FFF;
+         font-size: 16px;
+         font-weight: bold;
+         border-color: #FFF;
+         float:right;
+         padding:7px;
+    }
+
+    #logoutBtn{
+         height:30px;
+         width:70px;
+         font-size:14px;
+         margin:5px;
+         background:black;
+         border:2px solid #c8d6e5;
+         border-radius: 5px;
+         color:#FFF;
+         font-weight:bold;
+    }
+    #subscribebtn{
+         background:#1f80e0;
+         color:#FFF;
+         font-size: 12px;
+         margin:5px;
+         font-weight: bold;
+         border-color: #000;
+    }
+    #modalbtn{
+        height:30px;
+        width:70px;
+        margin:5px;
+        background:black;
+        border:2px solid #c8d6e5;
+        border-radius: 5px;
+        color:#FFF;
+        font-weight:bold;
+    }
+    #modal h2{
+        padding:1vh 0vh 1vh 0vh;
+        color:white;
+        font-size:22px;
+        font-weight:bold;
+        letter-spacing:2px;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background: #2c3e50;
+        padding: 10px;
+    }
+
+    .backBtn {
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .modal-btn {
+        padding-left:5px;
+        padding-right:5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .closeBtn {
+        color: #ffffff;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .closeBtn:hover,
+    .backBtn:hover,
+    .closeBtn:focus {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .account{
+        padding:10px;
+        margin-left:2vw;
+        width:28vw;
+        height:50px;
+        border-radius:5px;
+        border:solid white;
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+    }
+    .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .font{
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+    }
+
+    .spanborder{
+        color:white;
+        border-top-style: hidden;
+        border-left-style:hidden;
+        background: #2c3e50;
+        padding-right:5px;
+        font-family: Arial;
+        letter-spacing: 1px;
+        border-bottom:2px groove  white;
+        font-size: 15px;
+        margin-top:3px;
+        padding-bottom:0px;
+    }
+    .input1{
+        background: #2c3e50;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style:hidden;
+        border-bottom:2px groove  white;
+        width:25vw;
+        color:white;
+        letter-spacing:1px;
+        padding:5px 10px 5px 5px;
+        margin-top:5px;
+    }
+
+    #m_close{
+        background-color:#3498db;
+        width:440px;
+        margin-bottom:10px;
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+    }
+    #modalotp h2{
+        padding:5px 40px 5px 30px;
+        color:white;
+        font-size:22px;
+        font-weight:bold;
+        letter-spacing:2px;
+    }
+    #modalotp h3{
+        padding:5px 50px 5px 40px;
+        color:white;
+        font-size:22px;
+        font-weight:bold;
+        letter-spacing:2px;
+    }
+    .no-outline:focus {
+        outline: none;
+    }
+    .mobileinput{
+        display: flex;
+        flex-direction: row;
+        width:100%;
+        padding:10 50px 10px 40px;
+        color: #ffffff;
+    }
+    .input2{
+        border: none;
+        border-bottom: 1px solid white;
+        background: transparent;
+        width: 42px;
+        text-align: center;
+        font-size: 16px;
+        font-size: 16px;
+        line-height: 1.88;
+        margin-right: 18px;
+        outline: none;
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+    }
+    #modalotp a{
+        color:white;
+        font-size:22px;
+        font-weight:bold;
+        letter-spacing:2px;
+        margin-left:35px;
+        margin-top:10px;
+    }
+    #m_close2{
+        background-color:#3498db;
+        margin-top:5px;
+        margin-right:30px;
+        width:340px;
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+    }
+    #username{
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+        padding:5px;
+        margin-bottom:20px;
+        margin-left:25px;
+    }
+    #age{
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+        padding:5px;
+        margin-bottom:20px;
+        margin-left:25px;
+    }
+
+    #modaldetail label{
+        margin-right:20px;
+        color:white;
+        font-size:18px;
+    }
+    #modaldetail h2{
+        padding:5px 35px 5px 30px;
+        color:white;
+        font-size:22px;
+        font-weight:bold;
+        letter-spacing:2px;
+    }
+    #m_close3{
+        background-color:#3498db;
+        margin-top:10px;
+        width:400px;
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+    }
+    #modaldetail h3{
+        color:lawngreen;
+        font-weight:bold;
+        color:white;
+        font-weight:bold;
+        letter-spacing:1px;
+    }
+
+
+    .font1 {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: white;
+        padding-bottom: 5px;
+        margin-bottom: 3px;
+    }
+
+    .container {
+        height: auto;
+        background: #212121;
+        border: solid #212121;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 60px;
+    }
+
+    .free {
+        color: #212121;
+        width: 40px;
+        height: 18px;
+        border: solid grey;
+        background: grey;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+    .vip {
+        color: #212121;
+        width: 30px;
+        height: 18px;
+        border: solid gold;
+        background: gold;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .premium {
+        color: #212121;
+        width: 85px;
+        height: 18px;
+        border: solid #0abde3;
+        background: #0abde3;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .content {
+        width: 25vw;
+        height:15px;
+        display: flex;
+        align-items: center;
+        padding-top:25px;
+    }
+
+    .values {
+        width: 10vw;
+         height:15px;
+        display: flex;
+        justify-content: center;
+        align-items: left;
+
+    }
+
+    .font4 {
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: white;
+    }
+
+    .pack {
+        width: 15vw;
+        margin:2px 25px;
+        border-color: #bdc3c7;
+        border: 1px groove #ecf0f1;
+        border-radius: 10px;
+        height: 90px;
+        padding: 15px;
+    }
+    .pack:hover{
+    cursor:pointer;
+    }
+
+    .float {
+        float: left;
+        padding: 10px;
+        margin-right: 25px;
+        width: 16vw;
+    }
+
+    .btn2 {
+        border-color: #3498db;
+        background-color: #3498db;
+        border-radius: 10px;
+        width: 55vw;
+        height: 7vh;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        margin-left: 35px;
+        margin-bottom: 10px;
+    }
+
+    .border {
+        border-bottom: .1px groove #7f8c8d;
+        padding-bottom: 2px;
+    }
+
+    #check1_1 {
+       display:none;
+    }
+    #check2_2 {
+       display:none;
+    }
+    #check3_3 {
+       display:none;
+    }
+    .card{
+       display:flex;
+       flex-direction:row;
+       margin:0px 30px 0px 20px;
+       border-radius:5px;
+       padding-top:65px;
+    }
+
+    .card-content{
+       display:flex;
+       flex-direction:column;
+       color:white;
+       padding:15px;
+       margin-left:30px;
+       margin-right:30px;
+       margin-top:30px;
+    }
+
+    .font{
+       color:white;
+       font-family: 'Poppins', sans-serif;
+       font-weight:bold;
+       letter-spacing:1px;
+    }
+    .adjust{
+        width:180px;
+        height:220px;
+        border-radius:5px;
+    }
+    .set{
+        margin:20px 5px;
+    }
+    footer{
+       position: absolute;
+       margin: 0 auto;
+       width:100%;
+    }
+    .i{
+        font-size:36px;
+        width:40px;
+        margin:0px 5px;
+    }
+
+    .adjust2{
+        float:left;
+        padding-right:20px;
+    }
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background: #2c3e50;
+        padding: 10px;
+    }
+
+    .backBtn {
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .modal-btn {
+        padding-left:5px;
+        padding-right:5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .closeBtn {
+        color: #ffffff;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .closeBtn:hover,
+    .backBtn:hover,
+    .closeBtn:focus {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .set2{
+
+    }
+    .margin2{
+       margin:3vh 0vh 3vh .8vw;
+    }
+    footer{
+         background-color:black;
+         position: absolute;
+         margin: 0 auto;
+         width:100%;
+    }
+    .footer-content{
+         padding:10px;
+         margin:10px;
+         list-style-type: none;
+         float: left;
+         width:45%;
+    }
+    .footer-content h1{
+         margin-bottom:20px;
+         color:white;
+         font-weight:bold;
+         font-size:20px;
+         color:white;
+         font-weight:bold;
+         letter-spacing:1px;
+    }
+    .footer-content div{
+        float:left;
+        padding-right:20px;
+    }
+    .footer-content div a{
+        font-weight:bold;
+        color:white;
+        font-size: 15px;
+        text-decoration: none;
+    }
+    .address{
+        text-align: left;
+        padding-top: 20px;
+        font-size: 16px;
+    }
+    .footer-content2{
+         margin:10px;
+         list-style-type: none;
+         float: left;
+         width:20%;
+    }
+    .footer-content2 h1{
+         margin:10px;
+         font-size:20px;
+         text-align:left;
+         color:white;
+         font-weight:bold;
+         letter-spacing:1px;
+    }
+    .footer-content2 div{
+         text-align:left;
+         padding:20px;
+    }
+    .footer-content3{
+         margin:20px;
+         list-style-type:none;
+         float:left;
+         width:28%;
+    }
+    .footer-content3 h1{
+         text-align:center;
+         font-size:20px;
+         color:white;
+         font-weight:bold;
+         letter-spacing:1px;
+    }
+    .footer-content3 div{
+         text-align:center;
+         padding:15px;
+    }
+    .footer-content3{
+         padding:5px;
+    }
+
+    .block {
+        border-radius: 5px;
+        position: relative;
+        color: white;
+    }
+
+    .data {
+        box-shadow: #2f3640 0px -20px 25px 0px inset, #2f3640 0px -60px 30px 0px inset, #2f3640 0px 4px 2px, #2f3640 0px 8px 4px;
+        height: 5.5rem;
+        width: 99.9%;
+        font-size: 10px;
+        position: absolute;
+        top: 7.9rem;
+        left: 0px;
+        padding: 10px;
+        color:white;
+    }
+    .block .data{
+        opacity:0;
+    }
+    .block:hover .data{
+        opacity:1;
+    }
+    .block:hover{
+        z-index:10;
+    }
+    .card img{
+       position:relative;
+       width:800px;
+       height:350px;
+    }
+    .shadow{
+        display:flex;
+        justify-content:flex-end;
+        width:800px;
+        height:100%;
+        position:absolute;
+        right:0;
+        top:0;
+        box-shadow: inset 70px 0px 50px 2px black;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>WebseriesPreview</title>
+
+</head>
+<body >
+     <div class="main-container">
+
+         <div class="fix-nav nav">
+
+             <div class="logo">
+                 <img src="/static/stream-logo.png">
+             </div>
+
+              <div class="nav-content">
+                    <div class="dropdown">
+                          <button class="dropbtn">Movies</button>
+                          <div class="dropdown-content" style="background: #212121;">
+                            <a href="/hindimovies">Hindi</a>
+                            <a href="/englishmovies">English</a>
+                            <a href="#">Tamil</a>
+                            <a href="#">Bengali</a>
+                            <a href="#">Malyalam</a>
+
+                          </div>
+                    </div>
+
+                    <div class="dropdown">
+                          <button class="dropbtn">TV Shows</button>
+                          <div class="dropdown-content" style="background: #212121;">
+                            <a href="#">Quix</a>
+                            <a href="#">Star Plus</a>
+                            <a href="#">Specials</a>
+                            <a href="#">Star World</a>
+                            <a href="#">HBO</a>
+
+                          </div>
+                    </div>
+
+                    <div class="dropdown">
+                          <button class="dropbtn">Webseries</button>
+                          <div class="dropdown-content" style="background: #212121;">
+                              <a href="/webseries">Hindi</a>
+                              <a href="#">English</a>
+                          </div>
+                    </div>
+
+                    <div class="dropdown">
+                          <button class="dropbtn">Sports</button>
+                          <div class="dropdown-content" style="background: #212121;">
+                            <a href="#">Cricket</a>
+                            <a href="#">Football</a>
+                            <a href="#">Hockey</a>
+                            <a href="#">Tennis</a>
+                            <a href="#">Badminton</a>
+                          </div>
+                    </div>
+              </div>
+
+             <div class="nav-content2">
+                <div class="search-wrapper">
+                    <input type="search" placeholder="Search here" />
+                    <span><i class="fas fa-search"></i></span>
+                </div>
+
+                {% if ses %}
+                    <div id="user">{{ user.1 }}</div>
+                    <a href="/userlogout" id="logoutBtn" class="button modal-button logoutBtn" data-target="#modal">LOGOUT</a>
+                {% else %}
+                    <a id="subscribebtn" class = "button  modal-button" data-target="#subscribe">SUBSCRIBE</a>
+                    <a id="modalbtn" class="button modal-button" data-target="#modal">LOGIN</a>
+                {% endif %}
+            </div>
+
+         </div>
+
+
+         <!----------Dialog ------>
+        <div id="modal" class="modal ">
+            <div class="modal-content " style="margin:15% auto;width:35%">
+                <div class="modal-btn" style="float:right;">
+                    <span id="closeBtn" class="closeBtn">&times;</span>
+                </div>
+
+                <h2  class="center">Login to Continue</h2>
+                <div class="margin2">
+                      <div class="center account">
+                          Have a Facebook / Email Account
+                      </div>
+                </div>
+                <div class="center font" style="margin:15px 0px 15px 0px;">OR</div>
+                <div class="center">
+                    <span class="spanborder no-outline">+91&nbsp;&nbsp;<font style="font-size:20px;">|</font></span>
+                    <input inputmode="numeric" maxlength="10" type="text" pattern="[0-9]{10}" class="center input1 no-outline " id="mobileno" placeholder="Enter Your Mobile Number"/>
+                </div>
+                <div class="center" style="margin-top:30px;">
+                    <button id="m_close" data-target="#modalotp" class="button is-success">CONTINUE ></button>
+                </div>
+            </div>
+        </div>
+
+
+
+         <!----------Dialog for OTP ------>
+            <div id="modalotp" class="modal">
+                <div class="modal-content" style="margin:15% auto;width:30%;background: #2c3e50;">
+                    <div class="modal-btn" style="justify-content:space-between;">
+                        <span id="backBtn" class="backBtn"><i class="fas fa-arrow-left"></i></span>
+                        <span id="closeBtn2" class="closeBtn">&times;</span>
+                    </div>
+                    <h2>Enter the 4-digit code sent to</h2>
+                    <h3 id="show_mobile"></h3>
+                    <div class="mobileinput">
+                        <input type="text" pattern="[0-9]{1}" inputmode="numeric" maxlength="1" class="center no-outline input2">
+                        <input type="text" pattern="[0-9]{1}" inputmode="numeric" maxlength="1" class="center no-outline input2">
+                        <input type="text" pattern="[0-9]{1}" inputmode="numeric" maxlength="1" class="center no-outline input2">
+                        <input type="text" pattern="[0-9]{1}" inputmode="numeric" maxlength="1" class="center no-outline input2">
+                    </div>
+                    <a href="#">Resend Code</a>
+                    <div class="center margin2" >
+                        <button id="m_close2" data-target="#modaldetail" class="button is-success">CONTINUE ></button>
+                    </div>
+                </div>
+            </div>
+
+         <!----------Dialog for Userdetails ------>
+            <div id="modaldetail" class="modal">
+                <div class="modal-content" style="margin:15% auto;width:32%;background: #2c3e50;">
+                    <div class="modal-btn" style="justify-content:space-between;">
+                        <span id="backBtn2" class="backBtn"><i class="fas fa-arrow-left"></i></span>
+                        <span id="closeBtn3" class="closeBtn">&times;</span>
+                    </div>
+
+                    <h2>Tell Us About You</h2>
+                    <div class="margin2" style="margin-left:10px;">
+                        <input type="text" id="username" class="center no-outline input1 " placeholder="Your Name">
+                        <input type="text" id="age" class="center no-outline input1 " placeholder="Age">
+                    </div>
+                    <div style="margin-left:30px;">
+                        <label>Gender</label>
+                        <input type="radio" id="mgender" value="Male" name="gender" style=" margin-right:20px;"><font class="font" style="margin-right:20px;">Male</font>
+                        <input type="radio" id="fgender" value="Female" name="gender" style=" margin-right:20px;"><font class="font" style="margin-right:20px;">Female</font>
+                    </div>
+                    <div class="center margin2" style="margin-right:20px;" >
+                        <button id="m_close3" data-target="#subscribe" class="button is-success">CONTINUE ></button>
+                    </div>
+                    <div class="center" style="padding:5px;">
+                        <h3 id="msg"></h3>
+                    </div>
+                </div>
+            </div>
+
+             <!----------Dialog for Subscription ------>
+            <div id="subscribe" class="modal">
+                <div class="modal-content" style="margin:4.7% auto;width:62%;padding-top:2px;padding-bottom:0px;background:#212121;">
+                    <div class="modal-btn" style="float:right;">
+
+                        <span id="closeBtn4" class="closeBtn">&times;</span>
+                    </div>
+
+                    <div class="center font1" style="margin-top:3rem;">Subscribe to get more</div>
+                            <table style="margin-left: 35px;">
+                                <tr class="center">
+                                    <th class="content"></th>
+                                    <th class="values">
+                                        <div class="free center">FREE</div>
+                                    </th>
+                                    <th class="values">
+                                        <div class="vip center">VIP</div>
+                                    </th>
+                                    <th class="values">
+                                        <div class="premium center">PREMIUM</div>
+                                    </th>
+                                </tr>
+                                <tr class="center font4 border">
+                                    <td class="content">Unlimited Live Sports</td>
+                                    <td class="values">✕</td>
+                                    <td class="values">✓</td>
+                                    <td class="values">✓</td>
+                                </tr>
+                                <tr class="center font4 border">
+                                    <td class="content"> Specials & Star serials before TV</td>
+                                    <td class="values">✕</td>
+                                    <td class="values">✓</td>
+                                    <td class="values">✓</td>
+                                </tr>
+                                <tr class="center font4 border">
+                                    <td class="content">Multiplex & new Indian movies</td>
+                                    <td class="values">✕</td>
+                                    <td class="values">✓</td>
+                                    <td class="values">✓</td>
+                                </tr>
+                                <tr class="center font4 border">
+                                    <td class="content"> English shows & Disney + Originals</td>
+                                    <td class="values">✕</td>
+                                    <td class="values">✓</td>
+                                    <td class="values">✓</td>
+                                </tr>
+                                <tr class="center font4 border">
+                                    <td class="content">Ad free entertainment</td>
+                                    <td class="values">✕</td>
+                                    <td class="values">✓</td>
+                                    <td class="values">✓</td>
+                                </tr>
+                                <tr class="center font4 border">
+                                    <td class="content"> Screens you can watch on</td>
+                                    <td class="values">1</td>
+                                    <td class="values">1</td>
+                                    <td class="values">2</td>
+                                </tr>
+                                <tr class="center font4 border">
+                                    <td class="content"> Video quality</td>
+                                    <td class="values">SD</td>
+                                    <td class="values">HD</td>
+                                    <td class="values">4K</td>
+                                </tr>
+                            </table>
+
+                            <div class="float" style="margin-left:30px;">
+                                <div class="font4 pack" id="check1" style="padding-top:5px;">
+                                    <span style="display:inline;padding-bottom:5px;">
+                                        <span class="vip">VIP</span>
+                                        <span style="padding-left:140px;">
+                                            <i class="fas fa-check-circle" id="check1_1" style="color:#3498db;"></i>
+                                        </span>
+                                    </span>
+                                    <br> &#8377;
+                                    <br>
+                                    <span class="font1">399</span><span>/ Year</span>
+                                </div>
+                            </div>
+                            <div class="float">
+                                <div class="font4 pack" id="check2" style="padding-top:5px;">
+                                    <span style="display:inline;padding-bottom:5px;">
+                                        <span class="premium">PREMIUM</span>
+                                    <span style="padding-left:90px;">
+                                            <i class="fas fa-check-circle" id="check2_2" style="color:#3498db;"></i>
+                                        </span>
+                                    </span>
+                                    <br> &#8377;
+                                    <br>
+                                    <span class="font1">1499</span><span>/ Year</span>
+                                </div>
+                            </div>
+                            <div class="float">
+                                <div class="font4 pack" id="check3" style="padding-top:5px;">
+                                    <span style="display:inline;padding-bottom:5px;">
+                                        <span class="premium">PREMIUM</span>
+                                    <span style="padding-left:90px;">
+                                            <i class="fas fa-check-circle" id="check3_3" style="color:#3498db;"></i>
+                                        </span>
+                                    </span>
+                                    <br>&#8377;<br>
+                                    <span class="font1">299</span><span>/ Month</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button id="payment" data-target="#modal" class="button is-link is-hovered center btn2">CONTINUE ></button>
+                            </div>
+
+                </div>
+            </div>
+
+
+            <div class="card" style="background:black;">
+                <div class="card-content">
+                    <div class="font" style="font-size:25px;">
+                        {{row.3}} : {{row.2}}
+                    </div>
+                    <div class="font" style="font-size:12px;padding:10px;">
+                        Year . {{row.5}}
+                        <span> . Rating . {{row.6}} <i class="fas fa-star" style="color:#f9ca24;width:15px;"></i></span>
+                    </div>
+                    <div style="font-size:16px;font-weight:bold;padding:10px;">
+                        <div>{{row.4}}</div>
+                        <div>{{row.7}}</div>
+                    </div>
+                    {% if ses %}
+                        <div class="font" style="margin-top:40px;font-size: 26px;">
+                            <a href="/static/{{ row.13 }}"> <i class="fas fa-play" style="color:white;"></i>
+                                <span style="color:white;font-size:22px;" >Watch Movie</span>
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="font" style="margin-top:40px;font-size: 26px;">
+                            <span style="color:white;font-size:22px;" >Please Login First to Watch this</span>
+                        </div>
+                    {% endif %}
+
+                </div>
+                <div style="display: flex; margin-left:auto;">
+                    <img src="/static/{{row.14}}" />
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div style="margin-top:10px;">
+                <div class="font" style="font-size:25px;margin-left:25px;">
+                    Trailers & Extras
+                </div>
+                <section class="hero is-medium has-carousel" style="height:260px;" >
+                    <div class="hero-carousel view" style="padding-left:25px;padding-right:25px;">
+                            <a href="/static/{{row.12}}">
+                                <img src="/static/{{row.11}}" class="adjust set">
+                            </a>
+                    </div>
+                </section>
+
+                <div class="font" style="font-size:22px;margin-left:25px;">
+                    Episodes
+                </div>
+                <section class="hero is-medium has-carousel" style="height:260px;" >
+                    <div class="hero-carousel view " style="margin-left:25px;">
+                            {% for episode in wepisodes %}
+                              <div  class="zoom set">
+                                  <a href="/webseriespreview?row={{ episode }}"> <img  src="/static/{{episode.5}}" class="adjust"></a>
+                              </div>
+                            {% endfor %}
+                    </div>
+
+                </section>
+
+                <div class="font" style="font-size:25px;margin-left:25px;">
+                    More Like This
+                </div>
+                <section class="hero is-medium has-carousel" style="height:280px;" >
+                    <div class="hero-carousel view" style="padding-left:25px;padding-right:25px;">
+                            {% for webrow in webrows %}
+                               <div class="zoom set block" >
+                                   <a href="/webseriespreview?row={{webrow}}"><img  src="/static/{{webrow.11}}" class="adjust"></a>
+                                   <a href="/webseriespreview?row={{webrow}}">
+                                       <div class="data">
+                                           <div>
+                                            {{webrow.3}} : {{webrow.2}}
+                                           </div>
+                                           <div>
+                                                Year . {{webrow.5}}
+                                                <span> . Rating . {{webrow.6}} <i class="fas fa-star" style="color:#f9ca24;width:15px;"></i></span>
+                                           </div>
+                                           <div>
+                                            <div>{{webrow.4}}</div>
+                                            <div style="font-size:9px;">{{webrow.7}}</div>
+                                           </div>
+                                       </div>
+                                   </a>
+                               </div>
+                            {% endfor %}
+                    </div>
+                </section>
+        </div>
+
+     </div>
+
+
+ <footer>
+    <div style="margin:0 auto;width:90%;">
+        <div class="footer-content">
+            <h1>Contact</h1>
+            <div><a href="#">Home</a></div>
+            <div><a href="#">About</a></div>
+            <div><a href="#">Contact</a></div>
+            <div><a href="#">Terms & Conditions</a></div><br>
+            <div class="address" style="color:#ffffff;">
+                <p style="font-size: 14px;"><i class="fa fa-home" style="font-size:16px"></i>&nbsp;&nbsp;Copyright &copy; MyApp</p>
+            </div>
+        </div>
+        <div class="footer-content2">
+            <h1>Connect with us</h1>
+            <div style="color:#ffffff;">
+
+                <i class="fab fa-facebook-square i"></i>
+                <i class="fab fa-twitter-square i"></i>
+                <i class="fab fa-instagram i"></i>
+
+            </div>
+        </div>
+        <div class="footer-content3">
+            <h1>My App</h1>
+            <div>
+                <a href="#"><img src="/static/appstore.png"></a>
+                <a href="#"><img src="/static/playstore.png"></a>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+    <script>
+        bulmaCarousel.attach('.view', {
+            slidesToScroll: 1,
+            slidesToShow: 9,
+            pagination:false
+        });
+	</script>
+    <script>
+
+         $("#modalbtn").click(function() {
+            $("#modal").show();
+         });
+
+         $("#closeBtn").click(function() {
+             $("#modal").hide();
+         });
+
+         $("#m_close").click(function() {
+            $("#modalotp").show();
+            $("#modal").hide();
+            $('#show_mobile').html("+91"+($('#mobileno').val().substring(6).padStart(10,"*")))
+         });
+
+         $("#backBtn").click(function() {
+            $("#modal").show();
+            $("#modalotp").hide();
+         });
+
+         $("#closeBtn2").click(function() {
+             $("#modalotp").hide();
+         });
+
+         $("#m_close2").click(function() {
+            $("#modalotp").hide();
+
+            <!--for existing users-->
+
+            $.getJSON("http://localhost:8000/checkmobilenumber",{mobileno:$('#mobileno').val()},function(data){
+                     if(data){
+                          $('#user').html(data[1]);
+                          $.getJSON("http://localhost:8000/usersession",{mobileno:$('#mobileno').val(),username:data[1]},function(data){
+                                location.href="http://localhost:8000/userview"
+                          })
+
+                     }else{
+                         $("#modaldetail").show();
+                     }
+               });
+         });
+
+         $("#backBtn2").click(function() {
+            $("#modalotp").show();
+            $("#modaldetail").hide();
+         });
+
+         $("#closeBtn3").click(function() {
+             $("#modaldetail").hide();
+         });
+
+         $("#m_close3").click(function() {
+            $("#subscribe").show();
+            $("#modaldetail").hide();
+
+            var gender=""
+
+            if($("#mgender").prop("checked"))
+             { gender="Male"}
+
+            if($("#fgender").prop("checked"))
+             { gender="Female"}
+            $.getJSON("http://localhost:8000/userdetailsubmit",{mobileno:$('#mobileno').val(),username:$('#username').val(),age:$('#age').val(),gender:gender},function(data){
+                     $('#msg').html(data)
+               });
+         });
+
+         $("#closeBtn4").click(function() {
+             $("#subscribe").hide();
+             $.getJSON("http://localhost:8000/usersession",{mobileno:$('#mobileno').val(),username:$('#username').val()},function(data){
+                location.href="http://localhost:8000/userview"
+            })
+         });
+
+        $("#subscribebtn").click(function(){
+             $('#subscribe').show();
+        })
+
+
+        let amt=0;
+        $('#check1').click(function(){
+             amt=399;
+             $('#check1_1').show();
+             $('#check2_2').hide();
+             $('#check3_3').hide();
+        });
+        $('#check2').click(function(){
+             amt=1499;
+             $('#check1_1').hide();
+             $('#check2_2').show();
+             $('#check3_3').hide();
+        });
+        $('#check3').click(function(){
+             amt=299
+             $('#check1_1').hide();
+             $('#check2_2').hide();
+             $('#check3_3').show();
+        });
+
+       $('#payment').click(function(){
+            var options = {
+            "key": "rzp_test_GQ6XaPC6gMPNwH",
+            "amount": amt*100, // Example: 2000 paise = INR 20
+            "name": "Hotstar",
+            "description": "Payment for Subscription",
+            "image": "/static/stream-logo.png",// COMPANY LOGO
+            "handler": function (response) {
+                console.log(response);
+                $.getJSON("http://localhost:8000/usersession",{mobileno:$('#mobileno').val(),username:$('#username').val()},function(data){
+                                location.href="http://localhost:8000/userview"
+                          })
+                // AFTER TRANSACTION IS COMPLETE YOU WILL GET THE RESPONSE HERE.
+            },
+            "prefill": {
+                "name": $('#user').val(), // pass customer name
+
+                "contact": $('#mobileno').val() //customer phone no.
+            },
+            "notes": {
+                "address": "address" //customer address
+            },
+            "theme": {
+                "color": "#15b8f3" // screen color
+            }
+        };
+        console.log(options);
+        var propay = new Razorpay(options);
+        propay.open();
+       });
+    </script>
+</body>
+</html>
